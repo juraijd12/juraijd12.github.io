@@ -1,0 +1,26 @@
+{
+  "updated_at": "Refreshed from social links",
+  "items": [
+    {
+      "platform": "instagram",
+      "handle": "@nocturnetable",
+      "title": "Counter mise en place before first seating.",
+      "excerpt": "A closer look at tonight's opening station and the first-fire shellfish setup.",
+      "url": "https://instagram.com"
+    },
+    {
+      "platform": "facebook",
+      "handle": "Nocturne Table",
+      "title": "This week's reservation release is now open.",
+      "excerpt": "Salon tables and private requests are being reviewed in order of arrival.",
+      "url": "https://facebook.com"
+    },
+    {
+      "platform": "x",
+      "handle": "@nocturnetable",
+      "title": "Late seating is running with the shorter pairing tonight.",
+      "excerpt": "A quieter end to the room with a lighter pour progression and the same final course.",
+      "url": "https://twitter.com"
+    }
+  ]
+}

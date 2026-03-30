@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nocturne Table | Photo Credits</title>
+    <style>
+        :root {
+            color-scheme: dark;
+            --bg: #0f0908;
+            --panel: #1b120f;
+            --line: rgba(255, 232, 205, 0.12);
+            --text: #f6ead7;
+            --muted: #cdb8a1;
+            --gold: #d7aa61;
+            --font-display: "Georgia", serif;
+            --font-body: "Inter", system-ui, sans-serif;
+        }
+
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            min-height: 100vh;
+            padding: 28px 16px;
+            background: linear-gradient(135deg, #120906, #080506);
+            color: var(--text);
+            font-family: var(--font-body);
+        }
+
+        .wrap {
+            width: min(760px, 100%);
+            margin: 0 auto;
+            padding: 28px;
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            background: rgba(27, 18, 15, 0.92);
+        }
+
+        h1 {
+            margin: 0 0 12px;
+            font-family: var(--font-display);
+            font-size: 2.4rem;
+            color: var(--text);
+        }
+
+        p {
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        ul {
+            padding-left: 20px;
+            line-height: 1.8;
+        }
+
+        li + li {
+            margin-top: 10px;
+        }
+
+        a {
+            color: var(--gold);
+        }
+
+        .logo-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 14px;
+        }
+
+        .logo-row img {
+            width: 46px;
+            height: 46px;
+            object-fit: contain;
+            opacity: 0.95;
+        }
+    </style>
+</head>
+<body>
+    <main class="wrap">
+        <div class="logo-row" aria-hidden="true">
+            <img src="./images/restauran-logo.png" alt="" width="46" height="46" decoding="async">
+        </div>
+        <h1>Photo Credits</h1>
+        <p>The restaurant experience uses editorial images sourced from free photography libraries.</p>
+        <ul>
+            <li>
+                Arrival — <a href="https://unsplash.com/photos/an-asian-restaurant-at-night-with-neon-signs-0TXQ72yf_bA">WEI JIAHENG (Unsplash)</a>
+                · <a href="https://unsplash.com/license">Unsplash License</a>
+            </li>
+            <li>
+                Tasting — <a href="https://www.pexels.com/photo/gourmet-fine-dining-plate-with-sauce-and-herbs-28705621/">Filipp Romanovski (Pexels)</a>
+                · <a href="https://www.pexels.com/license/">Pexels License</a>
+            </li>
+            <li>
+                Room — <a href="https://www.pexels.com/photo/dark-modern-interior-of-a-restaurant-15627000/">miniperde (Pexels)</a>
+                · <a href="https://www.pexels.com/license/">Pexels License</a>
+            </li>
+            <li>
+                Journal — <a href="https://unsplash.com/photos/man-writing-in-notebook-at-a-table-8wNsPjF6jls">Hoi An and Da Nang Photographer (Unsplash)</a>
+                · <a href="https://unsplash.com/license">Unsplash License</a>
+            </li>
+        </ul>
+        <p><a href="./index.html">Back to Nocturne Table</a></p>
+    </main>
+</body>
+</html>

@@ -1,0 +1,1710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="RYNaByYKHU9por40WOjllOim10jANE1jut5GAGhb">
+    <title>AIYU Builders | Premier Contractor Services</title>
+    <meta name="description" content="AIYU Builders — premier residential, commercial, and industrial construction. Quality craftsmanship, on-time delivery. Contact us for a free consultation.">
+    <meta name="theme-color" content="#111111">
+    <link rel="icon" href="http://127.0.0.1:8000/brand/aiyu-logo.jpg">
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="http://127.0.0.1:8000/build/assets/app-PKAPo8UR.css" /><link rel="modulepreload" as="script" href="http://127.0.0.1:8000/build/assets/app-QpFg80zM.js" /><link rel="modulepreload" as="script" href="http://127.0.0.1:8000/build/assets/bootstrap-LUkOOqBt.js" /><link rel="modulepreload" as="script" href="http://127.0.0.1:8000/build/assets/dashboard-BBpeLYUl.js" /><link rel="stylesheet" href="http://127.0.0.1:8000/build/assets/app-PKAPo8UR.css" /><script type="module" src="http://127.0.0.1:8000/build/assets/app-QpFg80zM.js"></script>    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        [x-cloak] { display: none !important; }
+
+        :root {
+            --ink:    #111111;
+            --ink-2:  #444444;
+            --ink-3:  #888888;
+            --paper:  #F5F3EE;
+            --white:  #FFFFFF;
+            --rule:   #E0DDDA;
+            --orange: #E85D04;
+            --orange-dim: rgba(232, 93, 4, 0.10);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Barlow', system-ui, sans-serif;
+            font-weight: 400;
+            color: var(--ink);
+            background: var(--paper);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* ── DISPLAY FONT ── */
+        .display {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 800;
+            line-height: 0.92;
+            letter-spacing: -0.01em;
+            text-transform: uppercase;
+        }
+
+        /* ── SCROLL PROGRESS ── */
+        #progress-bar {
+            position: fixed;
+            top: 0; left: 0;
+            height: 3px;
+            background: var(--orange);
+            z-index: 200;
+            transition: width 0.1s linear;
+        }
+
+        /* ── TOPBAR ── */
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+            padding: 0 clamp(1.5rem, 4vw, 4rem);
+            background: var(--ink);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .brand img { height: 36px; width: auto; border-radius: 4px; }
+
+        .brand-name {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: #fff;
+        }
+
+        .topnav {
+            display: flex;
+            align-items: center;
+            gap: 0;
+        }
+
+        .topnav a {
+            display: flex;
+            align-items: center;
+            height: 64px;
+            padding: 0 1rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            transition: color 0.15s, border-color 0.15s;
+        }
+        .topnav a:hover { color: #fff; border-bottom-color: var(--orange); }
+
+        .topbar-cta {
+            display: inline-flex;
+            align-items: center;
+            height: 40px;
+            padding: 0 1.25rem;
+            background: var(--orange);
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 2px;
+            transition: background 0.15s;
+        }
+        .topbar-cta:hover { background: #cc4e00; }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+        .menu-toggle span {
+            display: block;
+            width: 22px; height: 1.5px;
+            background: #fff;
+            transition: transform 0.25s, opacity 0.25s;
+        }
+        .menu-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+        .menu-toggle.open span:nth-child(2) { opacity: 0; }
+        .menu-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+        /* Mobile nav overlay */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            inset: 64px 0 0;
+            background: var(--ink);
+            z-index: 99;
+            flex-direction: column;
+            padding: 2rem clamp(1.5rem, 4vw, 4rem);
+            gap: 0;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+        .mobile-nav.open { display: flex; }
+        .mobile-nav a {
+            display: block;
+            padding: 1.1rem 0;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            transition: color 0.15s;
+        }
+        .mobile-nav a:hover { color: var(--orange); }
+
+        /* ── HERO ── */
+        .hero {
+            position: relative;
+            background: var(--ink);
+            min-height: 90vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            overflow: hidden;
+        }
+
+        .hero-left {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: clamp(3rem, 6vw, 6rem) clamp(2rem, 4vw, 4rem);
+            padding-right: 3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--orange);
+            margin-bottom: 2rem;
+        }
+        .hero-tag::before {
+            content: '';
+            display: block;
+            width: 24px; height: 1px;
+            background: var(--orange);
+        }
+
+        .hero h1 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 800;
+            font-size: clamp(4rem, 8vw, 8rem);
+            line-height: 0.88;
+            letter-spacing: -0.01em;
+            text-transform: uppercase;
+            color: #fff;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 em {
+            font-style: normal;
+            color: var(--orange);
+        }
+
+        .hero-lead {
+            font-size: 1.0625rem;
+            font-weight: 300;
+            line-height: 1.75;
+            color: rgba(255,255,255,0.55);
+            max-width: 44ch;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-bottom: 4rem;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            height: 52px;
+            padding: 0 1.75rem;
+            background: var(--orange);
+            color: #fff;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 2px;
+            border: 2px solid var(--orange);
+            transition: background 0.15s, box-shadow 0.15s;
+            cursor: pointer;
+        }
+        .btn-primary:hover { background: #cc4e00; border-color: #cc4e00; box-shadow: 0 4px 20px rgba(232,93,4,0.35); }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            height: 52px;
+            padding: 0 1.75rem;
+            background: transparent;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.8125rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 2px;
+            border: 2px solid rgba(255,255,255,0.2);
+            transition: color 0.15s, border-color 0.15s;
+            cursor: pointer;
+        }
+        .btn-outline:hover { color: #fff; border-color: rgba(255,255,255,0.5); }
+
+        .hero-stats {
+            display: flex;
+            gap: 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .hero-stat {
+            flex: 1;
+            padding: 1.5rem 0;
+            border-right: 1px solid rgba(255,255,255,0.1);
+        }
+        .hero-stat:last-child { border-right: none; }
+        .hero-stat + .hero-stat { padding-left: 1.5rem; }
+
+        .hero-stat strong {
+            display: block;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1;
+            margin-bottom: 0.25rem;
+        }
+
+        .hero-stat span {
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.35);
+        }
+
+        /* Hero right — image panel */
+        .hero-right {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-right::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, var(--ink) 0%, transparent 30%);
+            z-index: 1;
+        }
+
+        .hero-right img,
+        .hero-right video {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: brightness(0.55) saturate(0.7);
+        }
+
+        .hero-right-label {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 2;
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.4);
+            writing-mode: vertical-rl;
+        }
+
+        /* ── LOGO BAND ── */
+        .logo-band {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding: 1.5rem clamp(1.5rem, 4vw, 4rem);
+            border-bottom: 1px solid var(--rule);
+            background: var(--white);
+        }
+
+        .logo-band-label {
+            font-size: 0.62rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--ink-3);
+        }
+
+        .logo-band-items {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .logo-band-items span {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--ink-3);
+            transition: color 0.15s;
+        }
+        .logo-band-items span:hover { color: var(--ink); }
+
+        /* ── SECTION BASE ── */
+        .section {
+            padding: clamp(4rem, 8vw, 8rem) clamp(1.5rem, 4vw, 4rem);
+        }
+
+        .section-inner { max-width: 1280px; margin: 0 auto; }
+
+        .section-label {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--orange);
+            margin-bottom: 1.5rem;
+        }
+        .section-label::before {
+            content: '';
+            display: block;
+            width: 24px; height: 1px;
+            background: var(--orange);
+            flex-shrink: 0;
+        }
+
+        .section-title {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 800;
+            font-size: clamp(2.8rem, 5vw, 5rem);
+            line-height: 0.92;
+            letter-spacing: -0.01em;
+            text-transform: uppercase;
+            color: var(--ink);
+        }
+
+        .section-title em { font-style: normal; color: var(--orange); }
+
+        .section-body {
+            font-size: 1.0625rem;
+            font-weight: 300;
+            line-height: 1.8;
+            color: var(--ink-2);
+        }
+
+        /* ── SERVICES ── */
+        #services { background: var(--white); }
+
+        .services-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: end;
+            margin-bottom: 4rem;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            border: 1px solid var(--rule);
+        }
+
+        .service-card {
+            padding: 2.5rem;
+            border-right: 1px solid var(--rule);
+            position: relative;
+            overflow: hidden;
+            transition: background 0.2s;
+        }
+        .service-card:last-child { border-right: none; }
+        .service-card:hover { background: var(--paper); }
+
+        .service-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 3px;
+            background: var(--orange);
+            transform: scaleX(0);
+            transition: transform 0.25s;
+            transform-origin: left;
+        }
+        .service-card:hover::after { transform: scaleX(1); }
+
+        .service-num {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--orange);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-icon {
+            width: 48px; height: 48px;
+            border: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--ink);
+            font-size: 1.1rem;
+            border-radius: 2px;
+        }
+
+        .service-title {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.01em;
+            color: var(--ink);
+            margin-bottom: 0.875rem;
+            line-height: 1.1;
+        }
+
+        .service-body {
+            font-size: 0.9rem;
+            font-weight: 300;
+            line-height: 1.75;
+            color: var(--ink-2);
+            margin-bottom: 1.75rem;
+        }
+
+        .service-link {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--orange);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 1px solid rgba(232,93,4,0.3);
+            padding-bottom: 2px;
+            transition: gap 0.15s;
+        }
+        .service-link:hover { gap: 0.75rem; }
+
+        /* ── PORTFOLIO ── */
+        #portfolio { background: var(--ink); }
+        #portfolio .section-title { color: #fff; }
+        #portfolio .section-body { color: rgba(255,255,255,0.45); }
+
+        .portfolio-header {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 3rem;
+            align-items: end;
+            margin-bottom: 3rem;
+        }
+
+        .filter-row {
+            display: flex;
+            gap: 0;
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 2px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .filter-btn {
+            height: 40px;
+            padding: 0 1.1rem;
+            background: none;
+            border: none;
+            border-right: 1px solid rgba(255,255,255,0.12);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.4);
+            cursor: pointer;
+            transition: background 0.15s, color 0.15s;
+        }
+        .filter-btn:last-child { border-right: none; }
+        .filter-btn:hover { color: #fff; background: rgba(255,255,255,0.06); }
+        .filter-btn.active { background: var(--orange); color: #fff; border-color: var(--orange); }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: rgba(255,255,255,0.08);
+        }
+
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+            background: rgba(255,255,255,0.04);
+        }
+
+        .project-card img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: brightness(0.6) saturate(0.7);
+            transition: filter 0.5s, transform 0.6s;
+        }
+        .project-card:hover img { filter: brightness(0.45) saturate(0.5); transform: scale(1.04); }
+
+        .project-card-body {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.75rem;
+        }
+
+        .project-cat {
+            font-size: 0.62rem;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--orange);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-name {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #fff;
+            line-height: 1.1;
+            margin-bottom: 0.35rem;
+        }
+
+        .project-meta {
+            font-size: 0.72rem;
+            color: rgba(255,255,255,0.45);
+            letter-spacing: 0.04em;
+        }
+
+        .project-arrow {
+            position: absolute;
+            top: 1.5rem; right: 1.5rem;
+            width: 40px; height: 40px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.8rem;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        .project-card:hover .project-arrow { opacity: 1; transform: scale(1); }
+
+        /* ── PROJECT MODAL ── */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.7);
+            z-index: 150;
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-panel {
+            position: fixed;
+            top: 0; right: 0; bottom: 0;
+            width: min(600px, 100%);
+            background: var(--white);
+            z-index: 151;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 1.5rem;
+            padding: 2rem 2rem 1.5rem;
+            border-bottom: 1px solid var(--rule);
+            position: sticky;
+            top: 0;
+            background: var(--white);
+            z-index: 1;
+        }
+
+        .modal-close {
+            width: 36px; height: 36px;
+            display: flex; align-items: center; justify-content: center;
+            background: none; border: 1px solid var(--rule);
+            border-radius: 2px; cursor: pointer;
+            color: var(--ink-2); font-size: 1rem;
+            flex-shrink: 0;
+            transition: background 0.15s;
+        }
+        .modal-close:hover { background: var(--paper); }
+
+        .modal-body { padding: 2rem; flex: 1; }
+
+        .modal-img {
+            width: 100%; aspect-ratio: 16/9;
+            object-fit: cover;
+            display: block;
+            margin-bottom: 1.5rem;
+            border-radius: 2px;
+        }
+
+        .modal-dots {
+            display: flex;
+            gap: 0.375rem;
+            margin-bottom: 2rem;
+        }
+
+        .modal-dot {
+            height: 3px;
+            flex: 1;
+            background: var(--rule);
+            border-radius: 2px;
+            cursor: pointer;
+            transition: background 0.15s;
+            border: none;
+        }
+        .modal-dot.active { background: var(--orange); }
+
+        .modal-spec-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            background: var(--rule);
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-spec {
+            background: var(--paper);
+            padding: 1rem 1.25rem;
+        }
+
+        .modal-spec-label {
+            font-size: 0.62rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--ink-3);
+            margin-bottom: 0.3rem;
+        }
+
+        .modal-spec-value {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--ink);
+            letter-spacing: 0.02em;
+        }
+
+        .modal-materials { display: flex; flex-direction: column; gap: 0; }
+
+        .material-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--rule);
+        }
+        .material-row:last-child { border-bottom: none; }
+
+        .material-icon {
+            width: 36px; height: 36px;
+            flex-shrink: 0;
+            background: var(--orange-dim);
+            border: 1px solid rgba(232,93,4,0.2);
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--orange);
+            font-size: 0.85rem;
+        }
+
+        .material-name {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 0.15rem;
+        }
+
+        .material-detail {
+            font-size: 0.78rem;
+            color: var(--ink-3);
+            line-height: 1.5;
+        }
+
+        .material-badge {
+            display: inline-block;
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--orange);
+            border: 1px solid rgba(232,93,4,0.25);
+            padding: 0.15rem 0.5rem;
+            border-radius: 2px;
+            margin-top: 0.3rem;
+        }
+
+        .modal-cta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1.5rem 2rem;
+            border-top: 1px solid var(--rule);
+            background: var(--white);
+            position: sticky;
+            bottom: 0;
+        }
+
+        .modal-cta p {
+            font-size: 0.875rem;
+            color: var(--ink-2);
+            font-weight: 300;
+        }
+
+        /* ── PROCESS ── */
+        #process { background: var(--paper); }
+
+        .process-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 6rem;
+            align-items: start;
+        }
+
+        .process-sticky { position: sticky; top: 7rem; }
+
+        .process-steps { display: flex; flex-direction: column; }
+
+        .process-step {
+            display: grid;
+            grid-template-columns: 4rem 1fr;
+            gap: 1.5rem;
+            padding: 2.5rem 0;
+            border-top: 1px solid var(--rule);
+        }
+        .process-step:last-child { border-bottom: 1px solid var(--rule); }
+
+        .step-num {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--rule);
+            line-height: 1;
+            letter-spacing: -0.02em;
+            padding-top: 0.25rem;
+        }
+
+        .step-title {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--ink);
+            margin-bottom: 0.625rem;
+            line-height: 1.1;
+        }
+
+        .step-body {
+            font-size: 0.9rem;
+            font-weight: 300;
+            line-height: 1.75;
+            color: var(--ink-2);
+            margin-bottom: 1rem;
+        }
+
+        .step-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.375rem;
+        }
+
+        .step-tag {
+            font-size: 0.62rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--ink-2);
+            border: 1px solid var(--rule);
+            padding: 0.25rem 0.625rem;
+            border-radius: 2px;
+        }
+
+        /* ── STATS ── */
+        #stats {
+            background: var(--ink);
+            padding: clamp(4rem, 8vw, 8rem) clamp(1.5rem, 4vw, 4rem);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border: 1px solid rgba(255,255,255,0.08);
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            padding: 3rem 2.5rem;
+            border-right: 1px solid rgba(255,255,255,0.08);
+            text-align: center;
+        }
+        .stat-item:last-child { border-right: none; }
+
+        .stat-num {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: clamp(3.5rem, 6vw, 5.5rem);
+            font-weight: 800;
+            color: #fff;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.35);
+        }
+
+        /* ── CONTACT ── */
+        #contact {
+            background: var(--white);
+            padding: clamp(4rem, 8vw, 8rem) clamp(1.5rem, 4vw, 4rem);
+        }
+
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: start;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--rule);
+        }
+        .contact-detail:first-child { border-top: 1px solid var(--rule); }
+
+        .contact-icon {
+            width: 40px; height: 40px;
+            background: var(--orange-dim);
+            border: 1px solid rgba(232,93,4,0.2);
+            border-radius: 2px;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--orange);
+            font-size: 0.875rem;
+            flex-shrink: 0;
+        }
+
+        .contact-detail-label {
+            font-size: 0.62rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--ink-3);
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-detail-value {
+            font-size: 1.0625rem;
+            font-weight: 500;
+            color: var(--ink);
+        }
+
+        /* Form */
+        .inquiry-form { display: flex; flex-direction: column; }
+
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            border-top: 1px solid var(--rule);
+        }
+        .form-field:last-of-type { border-bottom: 1px solid var(--rule); }
+
+        .form-field label {
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--orange);
+            padding: 0.875rem 0 0;
+        }
+
+        .form-field input,
+        .form-field select,
+        .form-field textarea {
+            background: none;
+            border: none;
+            outline: none;
+            font-family: 'Barlow', sans-serif;
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--ink);
+            padding: 0.5rem 0 1rem;
+            width: 100%;
+        }
+
+        .form-field input::placeholder,
+        .form-field textarea::placeholder { color: var(--ink-3); }
+        .form-field select { appearance: none; -webkit-appearance: none; cursor: pointer; color: var(--ink-2); }
+        .form-field textarea { resize: none; min-height: 100px; }
+
+        .form-submit-row {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .form-note {
+            font-size: 0.78rem;
+            font-weight: 300;
+            color: var(--ink-3);
+            line-height: 1.6;
+        }
+
+        /* ── FOOTER ── */
+        .site-footer {
+            background: var(--ink);
+            padding: 2rem clamp(1.5rem, 4vw, 4rem);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .footer-brand {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.4);
+        }
+
+        .footer-copy {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.25);
+            letter-spacing: 0.04em;
+        }
+
+        /* ── FLOATING CTA ── */
+        .floating-cta {
+            position: fixed;
+            bottom: 2rem; right: 2rem;
+            z-index: 80;
+            display: flex;
+            flex-direction: column;
+            gap: 0.625rem;
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity 0.3s, transform 0.3s;
+            pointer-events: none;
+        }
+        .floating-cta.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+
+        .float-btn {
+            width: 52px; height: 52px;
+            border-radius: 2px;
+            display: flex; align-items: center; justify-content: center;
+            color: #fff;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+        .float-btn:hover { transform: translateY(-2px); }
+        .float-btn-wa { background: #25D366; }
+        .float-btn-wa:hover { box-shadow: 0 4px 20px rgba(37,211,102,0.35); }
+        .float-btn-q { background: var(--orange); }
+        .float-btn-q:hover { box-shadow: 0 4px 20px rgba(232,93,4,0.35); }
+
+        /* ── REVEAL ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            .hero { grid-template-columns: 1fr; min-height: auto; }
+            .hero-right { display: none; }
+            .hero-left { padding: 4rem clamp(1.5rem, 4vw, 4rem); }
+            .services-header { grid-template-columns: 1fr; gap: 2rem; }
+            .service-grid { grid-template-columns: 1fr; }
+            .service-card { border-right: none; border-bottom: 1px solid var(--rule); }
+            .service-card:last-child { border-bottom: none; }
+            .process-layout { grid-template-columns: 1fr; gap: 3rem; }
+            .process-sticky { position: static; }
+            .stats-grid { grid-template-columns: 1fr 1fr; }
+            .stat-item:nth-child(2) { border-right: none; }
+            .stat-item:nth-child(3) { border-top: 1px solid rgba(255,255,255,0.08); }
+            .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
+            .project-grid { grid-template-columns: 1fr 1fr; }
+            .portfolio-header { grid-template-columns: 1fr; gap: 1.5rem; }
+        }
+
+        @media (max-width: 640px) {
+            .topnav { display: none; }
+            .topbar-cta { display: none; }
+            .menu-toggle { display: flex; }
+            .hero h1 { font-size: 3.5rem; }
+            .hero-stats { flex-wrap: wrap; }
+            .hero-stat { min-width: 45%; }
+            .project-grid { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: 1fr 1fr; }
+            .site-footer { flex-direction: column; align-items: flex-start; }
+            .modal-spec-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="progress-bar" style="width:0%"></div>
+
+    <!-- Floating CTA -->
+    <div class="floating-cta" id="floating-cta">
+        <a href="https://wa.me/5551234567?text=Hi%20AIYU%20Builders!%20I'd%20like%20a%20quote." target="_blank" class="float-btn float-btn-wa" title="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="#contact" class="float-btn float-btn-q" title="Get Quote">
+            <i class="fas fa-pen-to-square"></i>
+        </a>
+    </div>
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+        <a href="#hero" class="brand">
+            <img src="http://127.0.0.1:8000/brand/aiyu-logo.jpg" alt="AIYU Builders">
+            <span class="brand-name">AIYU Builders</span>
+        </a>
+
+        <nav class="topnav" aria-label="Primary">
+            <a href="#services">Services</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#process">Process</a>
+            <a href="#stats">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <div style="display:flex;align-items:center;gap:0.75rem;">
+            <a href="#contact" class="topbar-cta">Get Free Quote</a>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile nav -->
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile">
+        <a href="#services">Services</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#process">Process</a>
+        <a href="#stats">About</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- SUCCESS TOAST -->
+    
+    <!-- HERO -->
+    <section id="hero" class="hero">
+        <div class="hero-left reveal">
+            <div class="hero-tag">Building the Future</div>
+            <h1>Engineering<br>Your Vision<br>Into <em>Reality</em></h1>
+            <p class="hero-lead">Premier contractor services for residential, commercial and industrial projects. Quality craftsmanship, on-time delivery, unbeatable value.</p>
+            <div class="hero-actions">
+                <a href="#contact" class="btn-primary">Get Free Quote <i class="fas fa-arrow-right" style="font-size:0.75rem;"></i></a>
+                <a href="#portfolio" class="btn-outline">View Portfolio</a>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <strong>25+</strong>
+                    <span>Years experience</span>
+                </div>
+                <div class="hero-stat">
+                    <strong>500+</strong>
+                    <span>Projects delivered</span>
+                </div>
+                <div class="hero-stat">
+                    <strong>1,200+</strong>
+                    <span>Happy clients</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-right">
+            <video muted loop playsinline poster="http://127.0.0.1:8000/images/hero-poster.jpg"></video>
+            <div style="position:absolute;inset:0;background:linear-gradient(to right,#111 0%,transparent 30%);z-index:1;"></div>
+            <span class="hero-right-label">AIYU Builders &amp; Enterprises</span>
+        </div>
+    </section>
+
+    <!-- LOGO BAND -->
+    <div class="logo-band reveal">
+        <span class="logo-band-label">Trusted suppliers &amp; standards</span>
+        <div class="logo-band-items">
+            <span>CAT Equipment</span>
+            <span>DEWALT</span>
+            <span>3M</span>
+            <span>Hilti</span>
+            <span>Rockwool</span>
+        </div>
+    </div>
+
+    <!-- SERVICES -->
+    <section id="services" class="section">
+        <div class="section-inner">
+            <div class="services-header reveal">
+                <div>
+                    <div class="section-label">Core Services</div>
+                    <h2 class="section-title">What We<br>Build</h2>
+                </div>
+                <p class="section-body">Comprehensive construction solutions from concept to completion, with precision engineering and expert craftsmanship at every stage.</p>
+            </div>
+            <div class="service-grid reveal">
+                <div class="service-card">
+                    <div class="service-num">01</div>
+                    <div class="service-icon"><i class="fas fa-home"></i></div>
+                    <h3 class="service-title">Residential</h3>
+                    <p class="service-body">Custom homes, luxury renovations, kitchen and bathroom remodels, extensions and additions built to last.</p>
+                    <a href="#contact" class="service-link">Start a project <i class="fas fa-arrow-right" style="font-size:0.6rem;"></i></a>
+                </div>
+                <div class="service-card">
+                    <div class="service-num">02</div>
+                    <div class="service-icon"><i class="fas fa-building"></i></div>
+                    <h3 class="service-title">Commercial</h3>
+                    <p class="service-body">Office buildings, retail centers, restaurants, warehouses and industrial facilities delivered on schedule.</p>
+                    <a href="#contact" class="service-link">Start a project <i class="fas fa-arrow-right" style="font-size:0.6rem;"></i></a>
+                </div>
+                <div class="service-card">
+                    <div class="service-num">03</div>
+                    <div class="service-icon"><i class="fas fa-hammer"></i></div>
+                    <h3 class="service-title">Renovations</h3>
+                    <p class="service-body">Full remodels, historic restorations, interior updates and complete kitchen and bath transformations.</p>
+                    <a href="#contact" class="service-link">Start a project <i class="fas fa-arrow-right" style="font-size:0.6rem;"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio" class="section" x-data="portfolioData()" x-cloak>
+        <div class="section-inner">
+            <div class="portfolio-header reveal">
+                <div>
+                    <div class="section-label" style="color:rgba(255,255,255,0.4);">
+                        <span style="background:rgba(232,93,4,0.4);"></span>
+                        Featured Projects
+                    </div>
+                    <h2 class="section-title" style="color:#fff;">Our<br>Portfolio</h2>
+                </div>
+                <div class="filter-row">
+                    <button class="filter-btn" :class="filter==='all'?'active':''" @click="filter='all'">All</button>
+                    <button class="filter-btn" :class="filter==='residential'?'active':''" @click="filter='residential'">Residential</button>
+                    <button class="filter-btn" :class="filter==='commercial'?'active':''" @click="filter='commercial'">Commercial</button>
+                    <button class="filter-btn" :class="filter==='renovations'?'active':''" @click="filter='renovations'">Renovations</button>
+                </div>
+            </div>
+
+            <div class="project-grid reveal">
+                <template x-for="project in filteredProjects" :key="project.id">
+                    <div class="project-card" @click="openModal(project)">
+                        <img :src="project.image" :alt="project.title" loading="lazy">
+                        <div class="project-card-body">
+                            <div class="project-cat" x-text="project.category.toUpperCase()"></div>
+                            <div class="project-name" x-text="project.title"></div>
+                            <div class="project-meta" x-text="project.location + ' · ' + project.timeline"></div>
+                        </div>
+                        <div class="project-arrow"><i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </template>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <template x-if="selectedProject">
+            <div>
+                <div class="modal-overlay" @click="closeModal()"></div>
+                <div class="modal-panel"
+                     x-transition:enter="transition ease-out duration-300"
+                     x-transition:enter-start="opacity-0 translate-x-8"
+                     x-transition:enter-end="opacity-100 translate-x-0"
+                     x-transition:leave="transition ease-in duration-200"
+                     x-transition:leave-start="opacity-100 translate-x-0"
+                     x-transition:leave-end="opacity-0 translate-x-8">
+
+                    <div class="modal-header">
+                        <div>
+                            <div style="font-size:0.62rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--orange);margin-bottom:0.4rem;" x-text="selectedProject.category.toUpperCase()"></div>
+                            <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.75rem;font-weight:800;text-transform:uppercase;color:var(--ink);line-height:1.05;" x-text="selectedProject.title"></div>
+                            <div style="font-size:0.78rem;color:var(--ink-3);margin-top:0.2rem;" x-text="selectedProject.location"></div>
+                        </div>
+                        <button class="modal-close" @click="closeModal()"><i class="fas fa-xmark"></i></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <img class="modal-img" :src="selectedProject.images[currentImage]" :alt="selectedProject.title">
+                        <div class="modal-dots">
+                            <template x-for="(img, i) in selectedProject.images" :key="i">
+                                <button class="modal-dot" :class="currentImage===i?'active':''" @click="currentImage=i"></button>
+                            </template>
+                        </div>
+
+                        <div class="modal-spec-grid">
+                            <div class="modal-spec">
+                                <div class="modal-spec-label">Size</div>
+                                <div class="modal-spec-value" x-text="selectedProject.size"></div>
+                            </div>
+                            <div class="modal-spec">
+                                <div class="modal-spec-label">Timeline</div>
+                                <div class="modal-spec-value" x-text="selectedProject.timeline"></div>
+                            </div>
+                            <div class="modal-spec">
+                                <div class="modal-spec-label">Budget</div>
+                                <div class="modal-spec-value" x-text="selectedProject.budget"></div>
+                            </div>
+                            <div class="modal-spec">
+                                <div class="modal-spec-label">Team</div>
+                                <div class="modal-spec-value" x-text="selectedProject.team"></div>
+                            </div>
+                        </div>
+
+                        <div style="font-size:0.68rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-3);margin-bottom:1rem;">Materials Used</div>
+                        <div class="modal-materials">
+                            <template x-for="spec in selectedProject.specs" :key="spec.name">
+                                <div class="material-row">
+                                    <div class="material-icon"><i :class="spec.icon"></i></div>
+                                    <div>
+                                        <div class="material-name" x-text="spec.name"></div>
+                                        <div class="material-detail" x-text="spec.details"></div>
+                                        <div class="material-badge" x-text="spec.standard"></div>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+
+                    <div class="modal-cta">
+                        <p>Ready to build something similar?</p>
+                        <a href="#contact" class="btn-primary" style="height:44px;" @click="closeModal()">Discuss Your Project</a>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </section>
+
+    <!-- PROCESS -->
+    <section id="process" class="section">
+        <div class="section-inner">
+            <div class="process-layout">
+                <div class="process-sticky reveal">
+                    <div class="section-label">How We Work</div>
+                    <h2 class="section-title">Our<br>Proven<br>Process</h2>
+                    <p class="section-body" style="margin-top:1.5rem;">From consultation to handover — a 6-step methodology that ensures every project exceeds expectations.</p>
+                    <a href="#contact" class="btn-primary" style="display:inline-flex;margin-top:2rem;">Start Today <i class="fas fa-arrow-right" style="font-size:0.75rem;"></i></a>
+                </div>
+                <div class="process-steps reveal">
+                    <div class="process-step">
+                        <div class="step-num">01</div>
+                        <div>
+                            <h3 class="step-title">Consultation &amp; Planning</h3>
+                            <p class="step-body">In-depth site analysis, requirements gathering, and custom planning. We listen to your vision and translate it into actionable blueprints with precise timelines.</p>
+                            <div class="step-tags">
+                                <span class="step-tag">Free Consultation</span>
+                                <span class="step-tag">3D Renderings</span>
+                                <span class="step-tag">Fixed Price Quote</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-num">02</div>
+                        <div>
+                            <h3 class="step-title">Design &amp; Engineering</h3>
+                            <p class="step-body">Architectural and structural engineering with 3D modeling, material selection, and permit acquisition. Every detail optimized for performance.</p>
+                            <div class="step-tags">
+                                <span class="step-tag">Architect Certified</span>
+                                <span class="step-tag">BIM Modeling</span>
+                                <span class="step-tag">Permit Ready</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-num">03</div>
+                        <div>
+                            <h3 class="step-title">Foundation &amp; Structure</h3>
+                            <p class="step-body">Precision foundation work using Hilti anchoring systems, structural steel framing, and concrete work to exact specifications. Built to last generations.</p>
+                            <div class="step-tags">
+                                <span class="step-tag">Hilti Anchors</span>
+                                <span class="step-tag">Rebar Grade 60</span>
+                                <span class="step-tag">Engineered Concrete</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-num">04</div>
+                        <div>
+                            <h3 class="step-title">Construction Phase</h3>
+                            <p class="step-body">Skilled tradesmen using premium materials including 3M adhesives, DEWALT tools, and CAT machinery. Daily progress updates and strict quality control.</p>
+                            <div class="step-tags">
+                                <span class="step-tag">3M Adhesives</span>
+                                <span class="step-tag">CAT Equipment</span>
+                                <span class="step-tag">DEWALT Tools</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-num">05</div>
+                        <div>
+                            <h3 class="step-title">Finishing &amp; Fit-Out</h3>
+                            <p class="step-body">Premium interior finishes, custom cabinetry, flooring, painting, and fixtures. Final detailing and quality inspections to perfection standards.</p>
+                            <div class="step-tags">
+                                <span class="step-tag">Premium Finishes</span>
+                                <span class="step-tag">Custom Cabinetry</span>
+                                <span class="step-tag">Final Inspection</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-num">06</div>
+                        <div>
+                            <h3 class="step-title">Handover &amp; Warranty</h3>
+                            <p class="step-body">Comprehensive final walkthrough, owner training, documentation handover, and a 5-year structural warranty. Your complete satisfaction guaranteed.</p>
+                            <div class="step-tags">
+                                <span class="step-tag">5-Year Warranty</span>
+                                <span class="step-tag">Owner Training</span>
+                                <span class="step-tag">As-Built Drawings</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <section id="stats">
+        <div class="stats-grid reveal">
+            <div class="stat-item">
+                <div class="stat-num counter-num" data-target="25">0</div>
+                <div class="stat-label">Years Experience</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num counter-num" data-target="500">0</div>
+                <div class="stat-label">Projects Completed</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num counter-num" data-target="1200">0</div>
+                <div class="stat-label">Happy Clients</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num counter-num" data-target="150">0</div>
+                <div class="stat-label">Expert Team</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="contact-layout">
+            <div class="reveal">
+                <div class="section-label">Get In Touch</div>
+                <h2 class="section-title">Ready<br>to Build?</h2>
+                <p class="section-body" style="margin-top:1.5rem;margin-bottom:3rem;">Tell us about your project and we'll get back to you within one business day with a tailored plan and free estimate.</p>
+                <div>
+                    <div class="contact-detail">
+                        <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                        <div>
+                            <div class="contact-detail-label">Phone</div>
+                            <div class="contact-detail-value">(555) 123-4567</div>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <div class="contact-detail-label">Email</div>
+                            <div class="contact-detail-value">hello@aiyubuilders.com</div>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-icon"><i class="fas fa-clock"></i></div>
+                        <div>
+                            <div class="contact-detail-label">Hours</div>
+                            <div class="contact-detail-value">Mon–Sat, 8:00 AM – 6:00 PM</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reveal">
+                
+                <form method="POST" action="http://127.0.0.1:8000/landing" class="inquiry-form">
+                    <input type="hidden" name="_token" value="RYNaByYKHU9por40WOjllOim10jANE1jut5GAGhb" autocomplete="off">                    <div class="form-field">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" placeholder="Your full name" required value="">
+                    </div>
+                    <div class="form-field">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" placeholder="you@example.com" required value="">
+                    </div>
+                    <div class="form-field">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000" value="">
+                    </div>
+                    <div class="form-field">
+                        <label for="project_type">Project Type *</label>
+                        <select id="project_type" name="project_type" required>
+                            <option value="">Select a service</option>
+                            <option value="Residential" >Residential Construction</option>
+                            <option value="Commercial" >Commercial Build</option>
+                            <option value="Renovations" >Renovations &amp; Remodel</option>
+                        </select>
+                    </div>
+                    <div class="form-field" style="border-bottom:1px solid var(--rule);">
+                        <label for="message">Project Details *</label>
+                        <textarea id="message" name="message" placeholder="Tell us about your project — scope, timeline, location…" required rows="4"></textarea>
+                    </div>
+                    <div class="form-submit-row">
+                        <button type="submit" class="btn-primary">Send Message <i class="fas fa-arrow-right" style="font-size:0.75rem;"></i></button>
+                        <p class="form-note">We respond within one business day.</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <span class="footer-brand">AIYU Builders &amp; Enterprises</span>
+        <span class="footer-copy">&copy; 2026 AIYU Builders. All rights reserved.</span>
+    </footer>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        // ── PORTFOLIO DATA ──
+        function portfolioData() {
+            return {
+                projects: [
+                    {
+                        id: 1,
+                        title: 'Modern Coastal Residence',
+                        category: 'residential',
+                        description: 'Luxury 5,000 sqft beachfront home with panoramic ocean views and smart home integration.',
+                        image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80',
+                        images: [
+                            'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80',
+                            'https://images.unsplash.com/photo-1600566752355-35719a2a5bc1?auto=format&fit=crop&w=1200&q=80',
+                            'https://images.unsplash.com/photo-1600607687939-f6505265ab7b?auto=format&fit=crop&w=1200&q=80'
+                        ],
+                        location: 'Malibu, CA',
+                        size: '5,000 sqft',
+                        timeline: '8 months',
+                        budget: '$2.8M',
+                        team: '28 specialists',
+                        specs: [
+                            { name: 'Hilti Anchoring Systems', details: 'Hilti HST3 concrete anchors and Kwik Bolt TZ for structural connections', standard: 'Seismic Zone D Certified', icon: 'fas fa-bolt' },
+                            { name: '3M Adhesives & Sealants', details: '3M 5200 marine sealant and VHB structural tape for exterior applications', standard: 'ASTM D2559 Approved', icon: 'fas fa-droplet' },
+                            { name: 'Premium Insulation', details: 'Rockwool Safe n Sound batts with R-21 rating for superior thermal performance', standard: 'Energy Star Certified', icon: 'fas fa-shield-halved' },
+                            { name: 'Structural Glazing', details: 'Guardian SunGuard SNX 70/41 glass with Viracon lamination', standard: 'LEED Silver Compliant', icon: 'fas fa-square' }
+                        ]
+                    },
+                    {
+                        id: 2,
+                        title: 'Urban Tech Campus',
+                        category: 'commercial',
+                        description: 'Sustainable 45,000 sqft office campus with LEED Platinum certification and rooftop solar.',
+                        image: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1200&q=80',
+                        images: [
+                            'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1200&q=80',
+                            'https://images.unsplash.com/photo-1551288049-b1f2e8235b74?auto=format&fit=crop&w=1200&q=80'
+                        ],
+                        location: 'Silicon Valley, CA',
+                        size: '45,000 sqft',
+                        timeline: '14 months',
+                        budget: '$18M',
+                        team: '65 specialists',
+                        specs: [
+                            { name: 'Hilti Firestop Systems', details: 'Hilti CP 672 firestop and CFS-SL intumescent sealant for multi-hour rating', standard: 'UL 1479 Listed', icon: 'fas fa-fire-extinguisher' },
+                            { name: '3M Fire Barrier Sealant', details: '3M Fire Barrier Water Tight Sealant FS195 for dynamic movement joints', standard: 'ASTM E1966 4hr Rating', icon: 'fas fa-water' }
+                        ]
+                    },
+                    {
+                        id: 3,
+                        title: 'Heritage Brownstone Revival',
+                        category: 'renovations',
+                        description: 'Historic 1920s brownstone fully restored with modern systems while preserving original architectural character.',
+                        image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80',
+                        images: [
+                            'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80',
+                            'https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&w=1200&q=80'
+                        ],
+                        location: 'Brooklyn, NY',
+                        size: '3,200 sqft',
+                        timeline: '10 months',
+                        budget: '$1.4M',
+                        team: '18 specialists',
+                        specs: [
+                            { name: 'Historic Restoration Materials', details: 'Lime mortar repointing and matching original stone facade elements', standard: 'Landmarks Approved', icon: 'fas fa-landmark' },
+                            { name: 'Modern MEP Retrofit', details: 'Full electrical, plumbing and HVAC upgrade concealed within original structure', standard: 'NYC DOB Compliant', icon: 'fas fa-wrench' }
+                        ]
+                    }
+                ],
+                filter: 'all',
+                selectedProject: null,
+                currentImage: 0,
+                get filteredProjects() {
+                    if (this.filter === 'all') return this.projects;
+                    return this.projects.filter(p => p.category === this.filter);
+                },
+                openModal(project) {
+                    this.selectedProject = project;
+                    this.currentImage = 0;
+                    document.body.style.overflow = 'hidden';
+                },
+                closeModal() {
+                    this.selectedProject = null;
+                    document.body.style.overflow = '';
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // Progress bar
+            const bar = document.getElementById('progress-bar');
+            window.addEventListener('scroll', () => {
+                const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+                bar.style.width = scrolled + '%';
+            }, { passive: true });
+
+            // Mobile menu
+            const menuBtn = document.getElementById('menu-toggle');
+            const mobileNav = document.getElementById('mobile-nav');
+            menuBtn.addEventListener('click', () => {
+                const open = mobileNav.classList.toggle('open');
+                menuBtn.classList.toggle('open', open);
+                document.body.style.overflow = open ? 'hidden' : '';
+            });
+            mobileNav.querySelectorAll('a').forEach(a => {
+                a.addEventListener('click', () => {
+                    mobileNav.classList.remove('open');
+                    menuBtn.classList.remove('open');
+                    document.body.style.overflow = '';
+                });
+            });
+
+            // Smooth scroll
+            document.querySelectorAll('a[href^="#"]').forEach(a => {
+                a.addEventListener('click', e => {
+                    const target = document.querySelector(a.getAttribute('href'));
+                    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+                });
+            });
+
+            // Floating CTA
+            const floatCta = document.getElementById('floating-cta');
+            window.addEventListener('scroll', () => {
+                floatCta.classList.toggle('visible', window.scrollY > 800);
+            }, { passive: true });
+
+            // Scroll reveal
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach((e, i) => {
+                    if (e.isIntersecting) {
+                        setTimeout(() => e.target.classList.add('visible'), i * 80);
+                        observer.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.08 });
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+            // Counter animation
+            const counterObserver = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+                    const el = entry.target;
+                    const target = parseInt(el.dataset.target);
+                    const suffix = target >= 1000 ? '+' : (target === 150 ? '+' : (target === 25 ? '+' : '+'));
+                    const duration = 1800;
+                    const start = performance.now();
+                    const tick = now => {
+                        const progress = Math.min((now - start) / duration, 1);
+                        const ease = 1 - Math.pow(1 - progress, 3);
+                        el.textContent = Math.round(target * ease).toLocaleString() + suffix;
+                        if (progress < 1) requestAnimationFrame(tick);
+                    };
+                    requestAnimationFrame(tick);
+                    counterObserver.unobserve(el);
+                });
+            }, { threshold: 0.5 });
+            document.querySelectorAll('.counter-num').forEach(el => counterObserver.observe(el));
+        });
+    </script>
+</body>
+</html>

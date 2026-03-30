@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Company Suite internal system (portfolio demo)." />
+    <title>Company Suite — Internal System</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Geist+Mono:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../../style.css" />
+    <script defer src="../../script.js"></script>
+  </head>
+  <body>
+    <div class="grain" aria-hidden="true"></div>
+
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark">CS</span>
+          <span class="brand-name">Company Suite</span>
+        </a>
+
+        <button class="nav-toggle" type="button" aria-controls="nav-links" aria-expanded="false">
+          <span class="nav-toggle__bar" aria-hidden="true"></span>
+          <span class="nav-toggle__bar" aria-hidden="true"></span>
+          <span class="nav-toggle__bar" aria-hidden="true"></span>
+          <span class="sr-only">Menu</span>
+        </button>
+
+        <div class="nav-links" id="nav-links">
+          <a href="../index.html">Landing</a>
+          <a href="../../index.html#proud">Portfolio</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="section">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="section-label">Internal System</span>
+            <h2>Ops dashboard (demo).</h2>
+            <p class="muted">
+              A lightweight UI mock to represent an internal tool. Swap in your real pages/components as needed.
+            </p>
+          </div>
+
+          <div class="content-grid reveal">
+            <div class="card">
+              <h3>Today</h3>
+              <p class="muted">3 new leads · 2 pending approvals · 1 scheduled deployment</p>
+            </div>
+            <div class="card">
+              <h3>Pipeline</h3>
+              <p class="muted">Qualified → Proposal → In progress → Delivered</p>
+            </div>
+            <div class="card">
+              <h3>Alerts</h3>
+              <p class="muted">1 invoice overdue · 2 tasks due tomorrow</p>
+            </div>
+          </div>
+
+          <div class="card reveal" style="margin-top: 1.5rem;">
+            <h3>Recent requests</h3>
+            <div style="overflow-x: auto; margin-top: 0.75rem;">
+              <table style="width: 100%; border-collapse: collapse; min-width: 640px;">
+                <thead>
+                  <tr>
+                    <th style="text-align: left; padding: 0.75rem; border-bottom: 1px solid var(--border); color: var(--muted-2); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;">Ticket</th>
+                    <th style="text-align: left; padding: 0.75rem; border-bottom: 1px solid var(--border); color: var(--muted-2); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;">Owner</th>
+                    <th style="text-align: left; padding: 0.75rem; border-bottom: 1px solid var(--border); color: var(--muted-2); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;">Status</th>
+                    <th style="text-align: left; padding: 0.75rem; border-bottom: 1px solid var(--border); color: var(--muted-2); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;">Updated</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="padding: 0.75rem; border-bottom: 1px solid var(--border);">REQ-1042 · Website inquiry</td>
+                    <td style="padding: 0.75rem; border-bottom: 1px solid var(--border);">You</td>
+                    <td style="padding: 0.75rem; border-bottom: 1px solid var(--border);"><span class="ptag">New</span></td>
+                    <td style="padding: 0.75rem; border-bottom: 1px solid var(--border);">10m ago</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 0.75rem; border-bottom: 1px solid var(--border);">REQ-1039 · Proposal approval</td>
+                    <td style="padding: 0.75rem; border-bottom: 1px solid var(--border);">Ops</td>
+                    <td style="padding: 0.75rem; border-bottom: 1px solid var(--border);"><span class="ptag">Pending</span></td>
+                    <td style="padding: 0.75rem; border-bottom: 1px solid var(--border);">2h ago</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 0.75rem;">REQ-1033 · Access request</td>
+                    <td style="padding: 0.75rem;">Admin</td>
+                    <td style="padding: 0.75rem;"><span class="ptag">Approved</span></td>
+                    <td style="padding: 0.75rem;">Yesterday</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="proud-block reveal" style="margin-top: 1.5rem;">
+            <div class="proud-left">
+              <div class="project-tags">
+                <span class="ptag">Role-Based</span>
+                <span class="ptag">Dashboard</span>
+                <span class="ptag">Operations</span>
+              </div>
+              <h3 class="proud-title">Connect back to the landing page</h3>
+              <p class="muted proud-desc">
+                Keep the narrative clear: visitors see the marketing side first, then the internal tool that powers the workflow.
+              </p>
+            </div>
+            <div class="proud-right">
+              <a class="btn btn-primary" href="../index.html">Back to Landing</a>
+              <a class="btn btn-ghost" href="../../index.html#projects">View Other Projects</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <p class="muted">© <span id="year">2026</span> Your Name.</p>
+        <a class="footer-top" href="../../index.html">Portfolio Home</a>
+      </div>
+    </footer>
+  </body>
+</html>
+

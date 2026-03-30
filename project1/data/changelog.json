@@ -1,0 +1,20 @@
+{
+  "updated_at": "Synced today",
+  "items": [
+    {
+      "version": "v2.8.1",
+      "title": "Approval queue now supports release-level grouping",
+      "body": "Teams can batch related approvals together so launches are easier to scan before sign-off."
+    },
+    {
+      "version": "v2.8.0",
+      "title": "Executive summary widgets added to workspace home",
+      "body": "Leads can see risk, review load, and delivery health without opening extra panels."
+    },
+    {
+      "version": "v2.7.6",
+      "title": "New webhook endpoint for release status sync",
+      "body": "Ops tools can now push scheduled or delayed release changes directly into the product feed."
+    }
+  ]
+}

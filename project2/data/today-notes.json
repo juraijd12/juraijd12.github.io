@@ -1,0 +1,23 @@
+{
+  "updated_at": "Synced today",
+  "items": [
+    {
+      "tag": "Host Desk",
+      "time": "Tonight",
+      "title": "Two salon tables remain for the late seating.",
+      "body": "Counter requests are currently on waitlist, but the later salon block remains open for pairs and small parties."
+    },
+    {
+      "tag": "Kitchen",
+      "time": "New pour",
+      "title": "The shorter pairing now closes with a drier final glass.",
+      "body": "Guests asking for the lighter finish can move through the alternate pairing without losing the final cacao course."
+    },
+    {
+      "tag": "Room",
+      "time": "Private dining",
+      "title": "Thursday salon requests are being confirmed in order of arrival.",
+      "body": "The darker salon edge remains the best fit for anniversaries, quiet launches, and small private nights."
+    }
+  ]
+}

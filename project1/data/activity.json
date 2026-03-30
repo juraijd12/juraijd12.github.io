@@ -1,0 +1,20 @@
+{
+  "updated_at": "Updated 2 minutes ago",
+  "items": [
+    {
+      "tag": "Ops",
+      "title": "Release sign-off moved to 4:30 PM",
+      "body": "Legal review cleared the docs pack, leaving only final stakeholder approval."
+    },
+    {
+      "tag": "Growth",
+      "title": "Onboarding refresh entered QA",
+      "body": "Design and PM closed the handoff, with analytics tagging now under review."
+    },
+    {
+      "tag": "Product",
+      "title": "Roadmap digest sent to leadership",
+      "body": "The weekly summary now includes dependency flags and owner alignment notes."
+    }
+  ]
+}
