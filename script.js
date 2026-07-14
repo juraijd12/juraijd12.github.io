@@ -507,7 +507,7 @@
   const state = {
     routeId: "support",
     projectId: "support-playbook",
-    theme: localStorage.getItem("juraij-theme") || "light",
+    theme: localStorage.getItem("juraij-theme") || "dark",
     paletteOpen: false,
     paletteQuery: ""
   };
@@ -532,6 +532,7 @@
     localStorage.setItem("juraij-theme", theme);
     themeToggle.setAttribute("aria-pressed", String(theme === "light"));
     themeToggle.querySelector(".icon-button__label").textContent = theme === "light" ? "Light" : "Dark";
+    document.querySelector('meta[name="theme-color"]').setAttribute("content", theme === "light" ? "#f7f6f3" : "#090b10");
     if (announce) {
       showToast(theme === "light" ? "Light mode enabled" : "Dark mode enabled");
     }
@@ -963,8 +964,7 @@
     root.style.setProperty("--accent-2-rgb", route.accent2Rgb);
 
     document.title = `Juraij A. Dimapalao | ${route.eyebrow}`;
-    const themeColor = route.id === "automation" ? "#111014" : "#0b0d12";
-    document.querySelector('meta[name="theme-color"]').setAttribute("content", themeColor);
+    document.querySelector('meta[name="theme-color"]').setAttribute("content", state.theme === "light" ? "#f7f6f3" : "#090b10");
   }
 
   function setRoute(routeId, shouldToast = false) {
