@@ -1,0 +1,44 @@
+Juraij A. Dimapalao
+IT Support | Web Developer | Automation Engineer
+
+Contact
+Email: juraijd12@gmail.com
+GitHub: https://github.com/juraijd12/juraijd12.github.io
+Portfolio: https://juraijd12.github.io/
+
+Summary
+IT support and web automation professional with hands-on experience in workstation support, branch office troubleshooting, Laravel systems, Python automation, reporting, QA, and documentation.
+
+Core Skills
+- IT support and hardware troubleshooting
+- Network configuration and branch office support
+- Malware removal, Windows installation, driver installation
+- Laravel, PHP, JavaScript, Python, Flask
+- Automation, PDF generation, reporting
+- Database management and process improvement
+- QA testing and technical documentation
+
+Experience Highlights
+- Managed IT support for 20+ workstations
+- Supported 3 branch offices
+- Built attendance automation using Python
+- Generated automated PDF reports
+- Built an internal Laravel workspace
+- Configured GPS fleet tracking
+- Performed QA testing and documentation
+
+Selected Work
+- Attendance Flow Automation
+  Reduced manual attendance processing and turned it into a repeatable PDF report workflow.
+
+- AIYU Internal Laravel Workspace
+  Built an internal platform for documents, approvals, project context, and collaboration.
+
+- GPS Fleet Tracking Setup
+  Configured a monitoring-focused workflow for clearer operational visibility.
+
+- Support Playbook and Documentation
+  Created support guidance and handoff content that made troubleshooting easier to repeat.
+
+Availability
+Open to IT support, help desk, automation, web development, and operational improvement work.
