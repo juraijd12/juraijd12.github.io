@@ -507,7 +507,7 @@
   const state = {
     routeId: "support",
     projectId: "support-playbook",
-    theme: localStorage.getItem("juraij-theme") || "dark",
+    theme: localStorage.getItem("juraij-theme") || "light",
     paletteOpen: false,
     paletteQuery: ""
   };

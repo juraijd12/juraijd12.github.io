@@ -1435,3 +1435,285 @@ button {
     scroll-behavior: auto !important;
   }
 }
+
+/* ==========================================================================
+   FLAT EDITORIAL OVERRIDES
+   Drops the floating-card look in favor of direct-on-background sections.
+   ========================================================================== */
+:root {
+  --bg: #f7f6f3;
+  --bg-elevated: #ffffff;
+  --surface: #ffffff;
+  --surface-strong: #ffffff;
+  --surface-soft: #f3f2ee;
+  --surface-tint: rgba(43, 91, 255, 0.05);
+  --border: #e4e3df;
+  --border-strong: #c9c7c0;
+  --text: #0d0d0d;
+  --muted: #4a4a4a;
+  --faint: #888888;
+  --accent: #2b5bff;
+  --accent-contrast: #ffffff;
+  --accent-strong: #2b5bff;
+  --accent-soft: rgba(43, 91, 255, 0.08);
+  --accent-2: #d97706;
+  --accent-2-soft: rgba(217, 119, 6, 0.08);
+  --shadow: none;
+}
+
+html { color-scheme: light; }
+
+body {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.76)),
+    var(--bg);
+  color: var(--text);
+}
+
+.noise,
+.ambient {
+  display: none !important;
+}
+
+.topbar {
+  width: min(1280px, calc(100% - 2rem));
+  margin: 1rem auto 0;
+  padding: 0.85rem 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: rgba(247, 246, 243, 0.98);
+  backdrop-filter: none;
+  box-shadow: none;
+}
+
+.status-pill,
+.icon-button,
+.route-card,
+.briefing-shell,
+.signal-panel,
+.skills-panel,
+.contact-card,
+.project-detail,
+.timeline-shell,
+.availability-card,
+.contact-links a,
+.case-block,
+.shot-card,
+.palette,
+.palette-result,
+.case-modal__shell {
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.status-pill,
+.icon-button,
+.route-card,
+.briefing-shell,
+.signal-panel,
+.skills-panel,
+.contact-card,
+.project-detail,
+.timeline-shell,
+.availability-card,
+.contact-links a,
+.case-block,
+.shot-card,
+.palette,
+.palette-result,
+.case-modal__shell {
+  background: transparent;
+}
+
+.route-grid,
+.journey-grid,
+.proof-grid,
+.project-rail,
+.skill-bars,
+.timeline-list,
+.signal-list {
+  gap: 0;
+}
+
+.section {
+  padding: 4.75rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.hero {
+  min-height: auto;
+  padding-top: 3.5rem;
+}
+
+.hero-grid,
+.proof-layout,
+.skills-layout,
+.contact-layout,
+.project-explorer {
+  gap: 2rem;
+}
+
+.hero-copy {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.briefing-shell,
+.signal-panel,
+.skills-panel,
+.contact-card,
+.project-detail,
+.timeline-shell,
+.palette,
+.case-modal__shell {
+  padding: 1.1rem 0;
+  border-left: 0;
+  border-right: 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.route-card,
+.journey-card,
+.proof-card,
+.project-card,
+.timeline-item,
+.signal-item,
+.skill-row,
+.contact-links a,
+.availability-card,
+.case-block,
+.shot-card,
+.palette-result {
+  padding: 1rem 0;
+  border-left: 0;
+  border-right: 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 0;
+  background: transparent;
+}
+
+.route-card {
+  min-height: auto;
+  border-left: 3px solid transparent;
+}
+
+.route-card:hover,
+.route-card.is-active,
+.project-card:hover,
+.project-card.is-active {
+  transform: none;
+  background: rgba(43, 91, 255, 0.03);
+  box-shadow: none;
+}
+
+.route-card:hover,
+.route-card.is-active {
+  border-left-color: var(--accent);
+}
+
+.route-card__eyebrow,
+.project-kicker,
+.briefing-kicker,
+.signal-panel__note,
+.section-label {
+  color: var(--accent);
+}
+
+.journey-card::after {
+  display: none;
+}
+
+.journey-card__index,
+.proof-card__value,
+.timeline-item::before {
+  border-radius: 0;
+}
+
+.proof-card__value {
+  font-size: clamp(1.65rem, 3vw, 2.5rem);
+}
+
+.signal-item,
+.timeline-item,
+.contact-links a,
+.availability-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.project-rail {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.project-detail__inner,
+.case-grid,
+.shot-grid {
+  gap: 1rem;
+}
+
+.case-grid,
+.shot-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.button,
+.button-primary,
+.button-secondary,
+.button-tertiary,
+.case-link {
+  border-radius: 4px;
+}
+
+.skill-track {
+  height: 10px;
+  border-radius: 0;
+  background: transparent;
+}
+
+.skill-fill {
+  border-radius: 0;
+}
+
+.timeline-item {
+  padding-left: 0;
+}
+
+.timeline-item::before {
+  left: 0;
+  top: 1.15rem;
+}
+
+.timeline-item__inner {
+  padding-left: 1.5rem;
+}
+
+.palette-backdrop {
+  background: rgba(247, 246, 243, 0.9);
+}
+
+.case-modal::backdrop {
+  background: rgba(247, 246, 243, 0.92);
+}
+
+.footer {
+  background: transparent;
+  border-top: 1px solid var(--border);
+}
+
+@media (min-width: 980px) {
+  .hero-grid {
+    grid-template-columns: minmax(0, 1.2fr) minmax(360px, 0.8fr);
+  }
+}
+
+@media (max-width: 980px) {
+  .project-rail,
+  .case-grid,
+  .shot-grid {
+    grid-template-columns: 1fr;
+  }
+}
