@@ -1,21 +1,48 @@
 :root {
   color-scheme: dark;
-  --bg: #090b10;
-  --bg-elevated: #10141d;
-  --surface: rgba(17, 20, 29, 0.82);
-  --surface-strong: rgba(20, 24, 35, 0.96);
-  --surface-soft: rgba(255, 255, 255, 0.03);
-  --surface-tint: rgba(255, 255, 255, 0.06);
-  --border: rgba(255, 255, 255, 0.08);
-  --border-strong: rgba(255, 255, 255, 0.14);
-  --text: #f5f7fb;
-  --muted: rgba(245, 247, 251, 0.74);
-  --faint: rgba(245, 247, 251, 0.48);
+
+  /* 1. Surfaces & Borders */
+  --bg-page: #090b10; /* Deepest background */
+  --bg-elevated: #10141d; /* Gradient end */
+  --bg-surface: #111318; /* Default card/panel background */
+  --bg-surface-raised: #1a1d23; /* For hovered or active elements */
+  --surface: rgba(17, 20, 29, 0.82); /* Old var, for compatibility */
+  --surface-strong: rgba(20, 24, 35, 0.96); /* Old var, for compatibility */
+  --surface-soft: rgba(255, 255, 255, 0.03); /* Old var, for compatibility */
+  --surface-tint: rgba(255, 255, 255, 0.06); /* Old var, for compatibility */
+  --border: rgba(255, 255, 255, 0.08); /* Old var, for compatibility */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-interactive: rgba(255, 255, 255, 0.2);
+  --border-strong: rgba(255, 255, 255, 0.14); /* Old var, for compatibility */
+
+  /* 2. Typography */
+  --text-primary: #f0f2f5; /* Headings and key text */
+  --text-secondary: #a0a7b2; /* Body copy */
+  --text-tertiary: #6c737f; /* Meta info, disabled states */
+  --text: #f5f7fb; /* Old var */
+  --muted: #a0a7b2; /* Old var, mapped to secondary */
+  --faint: #6c737f; /* Old var, mapped to tertiary */
+
+  /* 3. Misc */
   --shadow: 0 30px 70px rgba(0, 0, 0, 0.4);
+
+  /* 4. Sizing & Radius */
   --radius-xl: 30px;
   --radius-lg: 22px;
   --radius-md: 16px;
   --radius-sm: 12px;
+  --radius-3: 1rem;
+  --size-1: 0.25rem;
+  --size-2: 0.5rem;
+  --size-3: 0.75rem;
+  --size-4: 1rem;
+  --size-5: 1.25rem;
+  --size-6: 1.5rem;
+  --size-8: 2rem;
+  --size-10: 2.5rem;
+  --size-12: 3rem;
+
+  /* 5. Accents (Dynamically set by JS) */
   --accent: #79f0ca;
   --accent-rgb: 121 240 202;
   --accent-soft: rgba(121, 240, 202, 0.12);
@@ -25,6 +52,11 @@
   --accent-2-rgb: 126 168 255;
   --accent-2-soft: rgba(126, 168, 255, 0.13);
   --max-width: 1200px;
+
+  /* 6. Fonts */
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "Manrope", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
 }
 
 [data-theme="light"] {
@@ -38,8 +70,8 @@
   --border: rgba(15, 23, 42, 0.1);
   --border-strong: rgba(15, 23, 42, 0.16);
   --text: #0f172a;
-  --muted: rgba(15, 23, 42, 0.74);
-  --faint: rgba(15, 23, 42, 0.52);
+  --muted: #475569; /* Mapped to secondary */
+  --faint: #64748b; /* Mapped to tertiary */
   --shadow: 0 28px 70px rgba(15, 23, 42, 0.12);
   --accent-contrast: #fbfffe;
 }
@@ -530,30 +562,29 @@ button {
 
 .briefing-metrics {
   display: grid;
-  gap: 0.85rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--size-6);
   margin-top: 1.4rem;
 }
 
-.metric {
-  display: grid;
-  gap: 0.2rem;
-  padding: 0.85rem 0.95rem;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border);
-  background: var(--surface-soft);
+.briefing-metric {
+  display: flex;
+  flex-direction: column;
 }
 
-.metric__value {
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 1.3rem;
-  font-weight: 700;
-  letter-spacing: -0.04em;
+.briefing-metric__value {
+  font-family: var(--font-mono);
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.03em;
 }
 
-.metric__label {
-  color: var(--muted);
-  font-size: 0.9rem;
-  line-height: 1.45;
+.briefing-metric__label {
+  margin-top: var(--size-1);
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.5;
 }
 
 .briefing-path {
@@ -616,73 +647,110 @@ button {
   line-height: 1.75;
 }
 
+/* ============================================= */
+/* 4. Journey Section (Timeline)                */
+/* ============================================= */
+
+/* The grid is now a single-column layout for the timeline */
 .journey-grid {
-  display: grid;
-  gap: 0.95rem;
-}
-
-.journey-card {
-  padding: 1rem;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border);
-  background: var(--surface);
-  display: grid;
-  gap: 0.7rem;
   position: relative;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-10); /* More space between cards */
+  margin-top: var(--size-10);
+  /* Add padding on the left to make room for the timeline line and markers */
+  padding-left: 80px;
 }
 
-.journey-card::after {
+/* The vertical line running down the timeline */
+.journey-grid::before {
   content: "";
   position: absolute;
-  inset: 0;
-  background: linear-gradient(120deg, transparent, rgba(var(--accent-rgb) / 0.08), transparent);
-  transform: translateX(-120%);
-  transition: transform 0.45s ease;
+  left: 40px; /* Centered in the 80px padding */
+  top: 24px; /* Align with the top of the first marker */
+  bottom: 24px; /* Align with the bottom of the last marker */
+  width: 2px;
+  background-color: var(--border-subtle);
 }
 
-.journey-card:hover::after {
-  transform: translateX(120%);
+/* Each card/entry in the timeline */
+.journey-card {
+  position: relative;
+  padding: var(--size-6);
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-3);
 }
 
+/* The head element is now used to position the marker outside the card */
 .journey-card__head {
+  position: absolute;
+  /* Position the center of the head at the timeline line */
+  left: -40px; /* (80px padding / 2) */
+  top: var(--size-6);
+  transform: translateX(-50%);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* The index number becomes the circular marker */
+.journey-card__index {
+  width: 48px;
+  height: 48px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.journey-card__index {
-  width: 36px;
-  height: 36px;
-  border-radius: 999px;
-  display: grid;
-  place-items: center;
-  background: var(--accent-soft);
-  color: var(--accent-strong);
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 0.8rem;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: var(--bg-surface);
+  border: 2px solid var(--border-interactive);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
   font-weight: 700;
+  font-size: 1rem;
   flex-shrink: 0;
+  transition:
+    background-color 180ms ease-out,
+    border-color 180ms ease-out,
+    color 180ms ease-out;
 }
 
-.journey-card h3,
-.project-detail h3,
-.availability-card h3,
-.case-modal h2 {
-  font-size: clamp(1.3rem, 2vw, 2rem);
+/* The kicker (route badge) is redundant on each step, so we hide it */
+.journey-card .project-kicker {
+  display: none;
 }
 
+/* Highlight marker on hover of the card */
+.journey-card:hover .journey-card__index {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg-page);
+}
+
+/* Typography for the card content, using the new system */
+.journey-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem; /* 24px */
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--size-2);
+}
+
+.journey-card h3 {
+  font-size: clamp(1.3rem, 2vw, 1.5rem);
+}
 .journey-card p {
-  margin: 0;
-  color: var(--muted);
+  color: var(--text-secondary);
   line-height: 1.7;
+  margin-bottom: var(--size-5);
+  max-width: 65ch;
 }
 
 .journey-card__footer {
   display: flex;
+  gap: var(--size-2);
   flex-wrap: wrap;
-  gap: 0.45rem;
 }
 
 .chip {
@@ -696,63 +764,106 @@ button {
   font-size: 0.78rem;
 }
 
+/* ============================================= */
+/* 5. Proof Section                             */
+/* ============================================= */
+
+/*
+  Redesigned layout for the #proof section.
+  On larger screens, it becomes a two-column layout with the stats
+  on the left and the signal panel on the right.
+*/
+.proof-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--size-8);
+}
+
+/*
+  New "dashboard" style for the stats grid.
+  Removes the card containers in favor of a scannable,
+  typography-driven grid of key metrics.
+*/
 .proof-grid {
   display: grid;
-  gap: 0.95rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--size-8) var(--size-4);
 }
 
-.proof-card {
-  padding: 1.1rem;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border);
-  background: var(--surface);
-  display: grid;
-  gap: 0.7rem;
+/*
+  Individual stat item. No background or border needed.
+  The hierarchy is created through type scale and color.
+*/
+.stat-item {
+  display: flex;
+  flex-direction: column;
 }
 
-.proof-card__value {
-  font-family: "Space Grotesk", sans-serif;
-  font-size: clamp(2rem, 4vw, 3rem);
+.stat-item__value {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 8vw, 3.5rem); /* Responsive font size */
   font-weight: 700;
+  line-height: 1.1;
+  color: var(--text-primary);
   letter-spacing: -0.05em;
 }
 
-.proof-card__label {
-  color: var(--muted);
+.stat-item__label {
+  margin-top: var(--size-2);
+  font-size: 0.9375rem; /* 15px */
   line-height: 1.6;
+  color: var(--text-secondary);
+  max-width: 24ch; /* Prevents long labels from wrapping awkwardly */
 }
 
+/*
+  Redesigned signal panel.
+  Uses the new surface color and a subtle border to feel like a
+  distinct UI panel.
+*/
 .signal-panel {
-  padding: 1.15rem;
-  margin-top: 1rem;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-3);
+  padding: var(--size-6);
 }
 
+.signal-panel__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--size-5);
+}
+
+.signal-panel__note {
+  font-family: var(--font-mono);
+  font-size: 0.75rem; /* 12px */
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/*
+  Styling for the new <dl> signal list.
+  Creates a clean, readable list of key takeaways.
+*/
 .signal-list {
   display: grid;
-  gap: 0.7rem;
-  margin-top: 1rem;
+  gap: var(--size-5);
 }
 
-.signal-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 0.85rem 0.95rem;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border);
-  background: var(--surface-soft);
-}
-
-.signal-item__label {
-  color: var(--text);
+.signal-list dt {
+  font-family: var(--font-body);
   font-weight: 700;
+  color: var(--text-primary);
+  font-size: 0.9375rem; /* 15px */
 }
 
-.signal-item__note {
-  color: var(--muted);
-  font-size: 0.92rem;
-  text-align: right;
+.signal-list dd {
+  margin-left: 0;
+  color: var(--text-secondary);
+  font-size: 0.9375rem; /* 15px */
+  line-height: 1.6;
 }
 
 .project-explorer {
@@ -765,12 +876,25 @@ button {
   gap: 0.85rem;
 }
 
+.project-card__thumbnail {
+  aspect-ratio: 16 / 8;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.project-card__thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .project-card {
-  padding: 1rem;
   border-radius: var(--radius-lg);
   border: 1px solid var(--border);
   background: var(--surface);
   display: grid;
+  grid-template-rows: auto 1fr;
   gap: 0.8rem;
   transition:
     transform 0.18s ease,
@@ -784,6 +908,12 @@ button {
   transform: translateY(-2px);
   border-color: rgba(var(--accent-rgb) / 0.45);
   background: linear-gradient(180deg, rgba(var(--accent-rgb) / 0.09), transparent 44%), var(--surface-strong);
+}
+
+.project-card__content {
+  padding: 0 1rem 1rem;
+  display: grid;
+  gap: 0.8rem;
 }
 
 .project-card__meta {
@@ -894,13 +1024,18 @@ button {
 }
 
 .shot-card {
+  margin: 0;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.shot-card {
   min-height: 120px;
   padding: 0.95rem;
   border-radius: var(--radius-md);
   border: 1px solid var(--border);
-  background:
-    linear-gradient(180deg, rgba(var(--accent-2-rgb) / 0.12), transparent 40%),
-    var(--surface-soft);
+  background: linear-gradient(180deg, rgba(var(--accent-2-rgb) / 0.12), transparent 40%), var(--surface-soft);
   display: grid;
   align-content: space-between;
 }
@@ -911,6 +1046,17 @@ button {
   font-size: 0.68rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
+}
+
+.shot-card img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.shot-card figcaption {
+  padding: var(--size-3) var(--size-4);
 }
 
 .shot-card__body {
@@ -1356,6 +1502,7 @@ button {
   }
 
   .proof-grid {
+    gap: var(--size-10);
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1380,6 +1527,7 @@ button {
   }
 
   .proof-grid {
+    gap: var(--size-10);
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
@@ -1414,6 +1562,33 @@ button {
   .case-modal .case-grid,
   .case-modal .shot-grid {
     grid-template-columns: 1fr;
+  }
+
+  .journey-grid {
+    padding-left: 0;
+  }
+  .journey-grid::before {
+    display: none; /* Hide timeline line */
+  }
+  .journey-card {
+    padding-left: var(--size-5);
+  }
+  .journey-card__head {
+    position: static;
+    transform: none;
+    margin-bottom: var(--size-4);
+    flex-direction: row;
+    align-items: center;
+    gap: var(--size-3);
+  }
+  .journey-card__index {
+    width: 36px;
+    height: 36px;
+    font-size: 0.875rem;
+    border-width: 1px;
+  }
+  .journey-card .project-kicker {
+    display: inline; /* Show kicker again when marker is inline */
   }
 }
 

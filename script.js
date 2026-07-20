@@ -634,10 +634,10 @@
     proofGrid.innerHTML = route.metrics
       .map(
         (metric) => `
-          <article class="proof-card reveal is-visible">
-            <div class="proof-card__value" data-value="${metric.value}">${metric.value}</div>
-            <div class="proof-card__label">${metric.label}</div>
-          </article>
+          <div class="stat-item reveal is-visible">
+            <div class="stat-item__value" data-value="${metric.value}">${metric.value}</div>
+            <div class="stat-item__label">${metric.label}</div>
+          </div>
         `
       )
       .join("");
@@ -653,10 +653,8 @@
     signalList.innerHTML = route.signals
       .map(
         (signal) => `
-          <div class="signal-item">
-            <div class="signal-item__label">${signal.label}</div>
-            <div class="signal-item__note">${signal.note}</div>
-          </div>
+          <dt>${signal.label}</dt>
+          <dd>${signal.note}</dd>
         `
       )
       .join("");
@@ -680,7 +678,7 @@
       .join("");
 
     toolCloud.innerHTML = route.tools
-      .map((tool) => `<span class="tool-chip">${tool}</span>`)
+      .map((tool) => `<span class="chip">${tool}</span>`)
       .join("");
   }
 
@@ -711,14 +709,24 @@
     card.type = "button";
     card.className = `project-card${active ? " is-active" : ""}`;
     card.dataset.project = project.id;
+    const firstScreenshot = project.screenshots[0] || { label: "Project", body: project.title };
+    const thumbnailUrl = `https://via.placeholder.com/400x200.png/1A1D23/6c737f?text=${encodeURIComponent(
+      firstScreenshot.label
+    )}`;
+
     card.innerHTML = `
-      <div class="project-card__meta">
-        <span class="chip">${project.category}</span>
-        <span class="chip">${project.stack[0]}</span>
+      <div class="project-card__thumbnail">
+        <img src="${thumbnailUrl}" alt="${firstScreenshot.body}" loading="lazy" width="400" height="200" />
       </div>
-      <h3 class="project-card__title">${project.title}</h3>
-      <p class="project-card__summary">${project.summary}</p>
-      <span class="case-link">Open case study</span>
+      <div class="project-card__content">
+        <div class="project-card__meta">
+          <span class="chip">${project.category}</span>
+          <span class="chip">${project.stack[0]}</span>
+        </div>
+        <h3 class="project-card__title">${project.title}</h3>
+        <p class="project-card__summary">${project.summary}</p>
+        <span class="case-link">Open case study</span>
+      </div>
     `;
     card.addEventListener("click", () => setProject(project.id, true));
     return card;
@@ -772,14 +780,17 @@
 
       <div class="shot-grid">
         ${project.screenshots
-          .map(
-            (shot) => `
-              <div class="shot-card">
-                <div class="shot-card__label">${shot.label}</div>
-                <div class="shot-card__body">${shot.body}</div>
-              </div>
-            `
-          )
+          .map((shot) => {
+            const imageUrl = `https://via.placeholder.com/400x250.png/1A1D23/6c737f?text=${encodeURIComponent(
+              shot.label
+            )}`;
+            return `
+              <figure class="shot-card">
+                <img src="${imageUrl}" alt="${shot.body}" loading="lazy" width="400" height="250" />
+                <figcaption class="shot-card__label">${shot.label}: ${shot.body}</figcaption>
+              </figure>
+            `;
+          })
           .join("")}
       </div>
 
@@ -889,14 +900,17 @@
       </div>
       <div class="shot-grid">
         ${project.screenshots
-          .map(
-            (shot) => `
-              <div class="shot-card">
-                <div class="shot-card__label">${shot.label}</div>
-                <div class="shot-card__body">${shot.body}</div>
-              </div>
-            `
-          )
+          .map((shot) => {
+            const imageUrl = `https://via.placeholder.com/400x250.png/1A1D23/6c737f?text=${encodeURIComponent(
+              shot.label
+            )}`;
+            return `
+              <figure class="shot-card">
+                <img src="${imageUrl}" alt="${shot.body}" loading="lazy" width="400" height="250" />
+                <figcaption class="shot-card__label">${shot.label}: ${shot.body}</figcaption>
+              </figure>
+            `;
+          })
           .join("")}
       </div>
       <div class="case-grid">
@@ -967,6 +981,19 @@
     document.querySelector('meta[name="theme-color"]').setAttribute("content", state.theme === "light" ? "#f7f6f3" : "#090b10");
   }
 
+  function renderBriefingMetrics(route) {
+    briefingMetrics.innerHTML = route.metrics
+      .map(
+        (metric) => `
+          <div class="briefing-metric">
+            <div class="briefing-metric__value">${metric.value}</div>
+            <div class="briefing-metric__label">${metric.label}</div>
+          </div>
+        `
+      )
+      .join("");
+  }
+
   function setRoute(routeId, shouldToast = false) {
     const route = ROUTES[routeId];
     if (!route) return;
@@ -975,6 +1002,7 @@
     state.projectId = route.projectOrder[0];
     root.dataset.route = routeId;
     updateHeroCopy(route);
+    renderBriefingMetrics(route);
     renderRouteCards();
     renderJourney(route);
     renderProof(route);
